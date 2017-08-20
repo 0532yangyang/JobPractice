@@ -46,24 +46,37 @@ def quick_sort(a, low, high):
     return a    # 是有返回值的
 
 
+# 逆序输出
 def heap_sort(a):
     def bulid_heap(a):
-        for i in range(0, a/2)[::-1]:
-            perc_down(a,i,len(a)-1)
-    def perc_down(a, i, end):
+        i = len(a)/2
+        endNode = len(a)-1
+        while i > 0:
+            perc_down(a, i, endNode)
+            i -= 1
 
+    def perc_down(a, i, endNode):
+        while i*2 <= endNode:
+            if i*2+1 <= endNode:    # 有右孩子
+                smaller = i*2 if a[i*2]<a[i*2+1] else i*2+1
+            else:
+                smaller = i*2
+            if a[smaller] < a[i]:
+                a[i], a[smaller] = a[smaller], a[i]
+                i = smaller
+            else: break
 
-
-    heap = bulid_heap(a)
-
-    for i in range(0,len(heap))[::-1]:
-        a[i], a[0] = a[0], a[i]
-        perc_down(a, 0, i)
-
-
+    a = [None] + a
+    bulid_heap(a)
+    i = len(a)-1
+    while i>=2:
+        a[i], a[1] = a[1], a[i]
+        perc_down(a, 1, i-1)
+        i-=1
+    return a[1:]
 
 
 if __name__ == '__main__':
     a = [5,2,1,3,4]
     a = [5,0,1,4,2,3]
-    print bubble_sort(a)
+    print heap_sort(a)

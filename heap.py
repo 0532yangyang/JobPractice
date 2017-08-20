@@ -23,7 +23,7 @@ class Bin_Heap():    # 小顶堆
             min_child_idx = self.min_child(i)
             if self.a[i] > self.a[min_child_idx]:
                 self.a[min_child_idx], self.a[i] = self.a[i], self.a[min_child_idx]
-            i *= 2
+            i *= 2  #错的
 
     def min_child(self, i):
         if i*2+1 > self.cur_size:
