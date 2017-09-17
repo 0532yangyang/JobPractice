@@ -25,7 +25,6 @@ def bubble_sort(a):
     return a
 
 
-
 # 快速排序: 通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小。 递归.
 def quick_sort(a, low, high):
     if low >= high:
@@ -37,7 +36,7 @@ def quick_sort(a, low, high):
         while i<j and a[j]>=key:    # 等于号
             j-=1
         a[i] = a[j]
-        while i<j and a[i] <= key:   # 等于号
+        while i<j and a[i]<=key:   # 等于号
             i+=1
         a[j] = a[i]
     a[i] = key
@@ -46,7 +45,7 @@ def quick_sort(a, low, high):
     return a    # 是有返回值的
 
 
-# 逆序输出
+# 堆排序，逆序输出
 def heap_sort(a):
     def bulid_heap(a):
         i = len(a)/2
